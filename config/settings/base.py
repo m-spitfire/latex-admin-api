@@ -41,7 +41,10 @@ DJANGO_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.admin",
-    'django.contrib.messages'
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    "django.forms",
+    'django.contrib.admindocs'
 ]
 
 THIRD_PARTY_APPS = [

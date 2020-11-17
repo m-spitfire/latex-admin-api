@@ -18,6 +18,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 
 urlpatterns = [
+    path(f"{settings.ADMIN_URL}doc/", include('django.contrib.admindocs.urls')),
     path(settings.ADMIN_URL, admin.site.urls),
     # api urls
     path("api/", include("config.api_router")),

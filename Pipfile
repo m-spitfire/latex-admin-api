@@ -24,6 +24,7 @@ django = "*"
 djangorestframework = "*"
 django-environ = "*"
 psycopg2 = "*"
+docutils = "*"
 
 [requires]
 python_version = "3.8"
