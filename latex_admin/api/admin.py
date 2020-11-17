@@ -11,5 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License
 
-# from django.contrib import admin
-# from django.contrib.auth import admin as auth_admin
+from django.contrib import admin
+
+from .models import File, Folder, Template
+
+
+class FileAdmin(admin.ModelAdmin):
+    """Model admin definition for :model:`api.File` model. Needed for custom columns."""
+
+    list_display = ('name', 'file_type', 'template', 'folder')
+
+
+admin.site.register(Folder)
+admin.site.register(Template)
+admin.site.register(File, FileAdmin)
