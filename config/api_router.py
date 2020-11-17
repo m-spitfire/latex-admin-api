@@ -14,12 +14,17 @@
 from django.conf import settings
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
+from latex_admin.api import viewsets
+
 
 if settings.DEBUG:
     router = DefaultRouter()
 else:
     router = SimpleRouter()
 
+router.register(r'templates', viewsets.TemplateViewSet)
+router.register(r'folders', viewsets.FolderViewSet)
+router.register(r'files', viewsets.FileViewSet)
 
 app_name = "api"
 urlpatterns = router.urls

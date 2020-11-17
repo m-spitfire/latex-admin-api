@@ -11,4 +11,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License
 
-# from rest_framework import serializers
+from rest_framework import serializers
+
+from .models import File, Folder, Template
+
+
+class FolderSerializer(serializers.ModelSerializer):
+    """Serializer definition for model :model:`api.Folder`."""
+
+    class Meta:
+        """Meta class definition for serializer ``FolderSerializer``."""
+
+        model = Folder
+        fields = ['id', 'name', 'file_set']
+
+
+class TemplateSerializer(serializers.ModelSerializer):
+    """Serializer definition for model :model:`api.Template`."""
+
+    files_in_root_dir = serializers.ListField(source="get_files_in_root")
+
+    class Meta:
+        """Meta class definiton for ``TemplateSerializer``."""
+
+        model = Template
+        fields = ['name', 'folder_set', 'files_in_root_dir']
+
+
+class FileSerializer(serializers.ModelSerializer):
+    """Serializer definiton for model :model:`api.File`."""
+
+    class Meta:
+        """Meta class definition for serializer ``FileSerializer``."""
+
+        model = File
+        fields = ['id', 'name', 'file_type', 'content']

@@ -11,10 +11,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License
 
-# from rest_framework import status
-# from rest_framework.decorators import action
-# from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
-# from rest_framework.response import Response
-# from rest_framework.viewsets import GenericViewSet
+from rest_framework import viewsets
 
-# from .serializers import ...*
+from .models import File, Folder, Template
+from .serializers import FileSerializer, FolderSerializer, TemplateSerializer
+
+
+class FolderViewSet(viewsets.ReadOnlyModelViewSet):
+    """This viewset automatically provides `list` and `retrieve` actions."""
+
+    queryset = Folder.objects.all()
+    serializer_class = FolderSerializer
+
+
+class TemplateViewSet(viewsets.ReadOnlyModelViewSet):
+    """This viewset automatically provides `list` and `retrieve` actions."""
+
+    queryset = Template.objects.all()
+    serializer_class = TemplateSerializer
+
+
+class FileViewSet(viewsets.ReadOnlyModelViewSet):
+    """This viewset automatically provides `list` and `retrieve` actions."""
+
+    queryset = File.objects.all()
+    serializer_class = FileSerializer
